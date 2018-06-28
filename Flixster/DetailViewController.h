@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UIImageView+AFNetworking.h"
 
 @interface DetailViewController : UIViewController
+
+@property (nonatomic, strong) NSDictionary *movie;
 
 @end

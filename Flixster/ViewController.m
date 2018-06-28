@@ -10,6 +10,7 @@
 #import <AFNetworking/UIKit+AFNetworking.h>
 #import <MBProgressHUD.h>
 #import "MovieCell.h"
+#import "DetailViewController.h"
 
 @interface ViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -80,10 +81,17 @@
     //setup session
     NSURLSession *session = [NSURLSession sessionWithConfiguration: [NSURLSessionConfiguration defaultSessionConfiguration]
 delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
-    
     NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         if (error != nil) {
-            NSLog(@"%@", [error localizedDescription]);
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Can't Get Movies" message:@"The internet connection appears to be offline" preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *tryAgain = [UIAlertAction actionWithTitle:@"Try again" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                //try to reload movies
+                [self loadMovies];
+            }];
+            [alert addAction:tryAgain];
+            //present the alert 
+            [self presentViewController:alert animated:YES completion:^{}];
+            
         }
         else {
             NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
@@ -99,6 +107,18 @@ delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
         [self.activityIndicator stopAnimating];
     }];
     [task resume];
+}
+//enables to send data to a different view controller
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    UITableViewCell *clickedCell = sender;
+    //get the index of the clicked cell
+    NSIndexPath *cellIndex = [self.tableView indexPathForCell:clickedCell];
+    //get instance of detail view controller
+    DetailViewController *detailViewControler = [segue destinationViewController];
+    NSDictionary *currentMovie = self.movies[cellIndex.row];
+    //pass the movie to the details view controller
+    detailViewControler.movie = currentMovie;
+    
 }
 
 

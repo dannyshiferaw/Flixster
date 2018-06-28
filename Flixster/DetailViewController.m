@@ -15,15 +15,30 @@
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *overviewLabel;
 
-@property (nonatomic, strong) NSDictionary *movie;
-
 @end
 
 @implementation DetailViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    //download poster image
+    NSString *baseUrl = @"https://image.tmdb.org/t/p/w500";
+    NSString *partialUrl = self.movie[@"poster_path"];
+    NSString *url = [baseUrl stringByAppendingString: partialUrl];
+    NSURL *posterUrl = [NSURL URLWithString: url];
+    [self.posterImageView setImageWithURL:posterUrl];
+    
+    //download backdrop image
+    NSString *partialBackdropUrl = self.movie[@"backdrop_path"];
+    NSString *backdropImageUrl = [baseUrl stringByAppendingString: partialBackdropUrl];
+    NSURL *backdropUrl = [NSURL URLWithString: backdropImageUrl];
+    [self.backdropImageView setImageWithURL:backdropUrl];
+    
+    //set title and overview 
+    self.titleLabel.text = self.movie[@"title"];
+    self.overviewLabel.text = self.movie[@"overview"];
+
 }
 
 - (void)didReceiveMemoryWarning {

@@ -14,6 +14,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *movieTitle;
 
-@property (weak, nonatomic) IBOutlet UITextView *movieDescription;
+@property (weak, nonatomic) IBOutlet UILabel *movieDescription;
+
 
 @end
