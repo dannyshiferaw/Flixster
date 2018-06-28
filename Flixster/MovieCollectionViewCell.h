@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <UIKit+AFNetworking.h>
 
 @interface MovieCollectionViewCell : UICollectionViewCell
+
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
 
 @end
