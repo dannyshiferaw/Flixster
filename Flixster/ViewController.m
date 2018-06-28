@@ -8,11 +8,14 @@
 
 #import "ViewController.h"
 #import <AFNetworking/UIKit+AFNetworking.h>
+#import <MBProgressHUD.h>
 #import "MovieCell.h"
 
 @interface ViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 
 @property NSArray *movies;
 
@@ -28,7 +31,13 @@
     self.tableView.dataSource = self;
     self.tableView.rowHeight = 200;
     
+    //display activity indicator
+    [self.activityIndicator startAnimating];
+    //load movies
     [self loadMovies];
+    //hide the activity indicator when loading is done
+    
+    
     self.tableView.refreshControl = [[UIRefreshControl alloc] init];
     [self.tableView.refreshControl addTarget:self action:@selector(loadMovies) forControlEvents:UIControlEventValueChanged];
 
@@ -87,9 +96,13 @@ delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
             
         }
         [self.tableView.refreshControl endRefreshing];
+        [self.activityIndicator stopAnimating];
     }];
     [task resume];
 }
+
+
+
 
 
 @end

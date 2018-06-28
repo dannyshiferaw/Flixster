@@ -7,6 +7,7 @@ target 'Flixster' do
 
   # Pods for Flixster
   pod 'AFNetworking'
+  pod 'MBProgressHUD', '~> 1.1.0'
 
 
   target 'FlixsterTests' do
