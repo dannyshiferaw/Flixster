@@ -12,4 +12,6 @@
 
 @property(nonatomic, strong) NSArray *movies;
 
+@property(nonatomic, strong) NSArray *filterdMovies; 
+
 @end

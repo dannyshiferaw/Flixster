@@ -8,10 +8,13 @@
 
 #import "MovieCollectionViewController.h"
 #import "MovieCollectionViewCell.h"
+#import "DetailViewController.h"
 
-@interface MovieCollectionViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
+@interface MovieCollectionViewController () <UICollectionViewDelegate, UICollectionViewDataSource, UISearchBarDelegate>
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+
+@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 
 
 @end
@@ -23,6 +26,7 @@
     // Do any additional setup after loading the view.
     self.collectionView.dataSource = self;
     self.collectionView.delegate = self;
+    self.searchBar.delegate = self;
     
     [self loadMovies];
     
@@ -31,8 +35,6 @@
     CGFloat itemWidth = self.collectionView.frame.size.width / postersPerLine;
     CGFloat itemHeight = itemWidth * 1.5;
     layout.itemSize = CGSizeMake(itemWidth, itemHeight);
-    
-    
     
 }
 
@@ -44,7 +46,7 @@
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     MovieCollectionViewCell *collectionViewCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"MovieCollectionCell" forIndexPath:indexPath];
     
-    NSDictionary *movie = self.movies[indexPath.row];
+    NSDictionary *movie = self.filterdMovies[indexPath.row];
     
     //download movie poster
     NSString *baseUrl = @"https://image.tmdb.org/t/p/w500";
@@ -59,7 +61,7 @@
 }
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return self.movies.count;
+    return self.filterdMovies.count;
 }
 
 -(void) loadMovies {
@@ -87,6 +89,7 @@
             
             //get movies
             self.movies = dataDictionary[@"results"];
+            self.filterdMovies = self.movies;
             
             //reload table
             [self.collectionView reloadData];
@@ -98,15 +101,33 @@
 }
 
 
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+    if (searchText.length != 0) {
+        NSPredicate *predicate = [NSPredicate predicateWithBlock:
+                                  ^BOOL(NSDictionary *evaluateObject, NSDictionary *bindings) {
+                                      return [evaluateObject[@"title"]
+                                           containsString:searchText];
+                                  }];
+        self.filterdMovies = [self.movies filteredArrayUsingPredicate: predicate];
+    } else {
+        self.filterdMovies = self.movies;
+    }
+    [self.collectionView reloadData];
+}
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigationra
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-}
-*/
+    UICollectionViewCell *clickedCell = sender;
+    //get the index of the clicked cell
+    NSIndexPath *cellIndex = [self.collectionView indexPathForCell:clickedCell];
+    //get instance of detail view controller
+    DetailViewController *detailViewControler = [segue destinationViewController];
+    NSDictionary *currentMovie = self.filterdMovies[cellIndex.item];
+    //pass the movie to the details view controller
+    detailViewControler.movie = currentMovie;}
 
 @end

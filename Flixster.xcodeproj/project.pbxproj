@@ -19,6 +19,8 @@
 		C5025C4D20E409A800C67025 /* FlixsterUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = C5025C4C20E409A800C67025 /* FlixsterUITests.m */; };
 		C5025C5B20E40A8F00C67025 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = C5025C5A20E40A8F00C67025 /* README.md */; };
 		C5025C5E20E40D7D00C67025 /* MovieCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C5025C5D20E40D7D00C67025 /* MovieCell.m */; };
+		C597EFAC20E5FC0700842DCD /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C597EFAB20E5FC0700842DCD /* WebKit.framework */; };
+		C597EFAF20E5FC3F00842DCD /* TrailerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C597EFAE20E5FC3F00842DCD /* TrailerViewController.m */; };
 		C5BF545C20E4BC5C00D1D7AD /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C5BF545B20E4BC5C00D1D7AD /* DetailViewController.m */; };
 		C5EE524220E585F50029CA3B /* MovieCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C5EE524120E585F50029CA3B /* MovieCollectionViewController.m */; };
 		C5EE524520E5883D0029CA3B /* MovieCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C5EE524420E5883D0029CA3B /* MovieCollectionViewCell.m */; };
@@ -68,6 +70,9 @@
 		C5025C5A20E40A8F00C67025 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		C5025C5C20E40D7D00C67025 /* MovieCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MovieCell.h; sourceTree = "<group>"; };
 		C5025C5D20E40D7D00C67025 /* MovieCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MovieCell.m; sourceTree = "<group>"; };
+		C597EFAB20E5FC0700842DCD /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		C597EFAD20E5FC3F00842DCD /* TrailerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TrailerViewController.h; sourceTree = "<group>"; };
+		C597EFAE20E5FC3F00842DCD /* TrailerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TrailerViewController.m; sourceTree = "<group>"; };
 		C5BF545A20E4BC5C00D1D7AD /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		C5BF545B20E4BC5C00D1D7AD /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		C5EE524020E585F50029CA3B /* MovieCollectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MovieCollectionViewController.h; sourceTree = "<group>"; };
@@ -84,6 +89,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C597EFAC20E5FC0700842DCD /* WebKit.framework in Frameworks */,
 				53675AAF0933FC1003B3C559 /* libPods-Flixster.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -150,6 +156,8 @@
 				C5BF545B20E4BC5C00D1D7AD /* DetailViewController.m */,
 				C5EE524020E585F50029CA3B /* MovieCollectionViewController.h */,
 				C5EE524120E585F50029CA3B /* MovieCollectionViewController.m */,
+				C597EFAD20E5FC3F00842DCD /* TrailerViewController.h */,
+				C597EFAE20E5FC3F00842DCD /* TrailerViewController.m */,
 			);
 			path = Flixster;
 			sourceTree = "<group>";
@@ -175,6 +183,7 @@
 		E9AA6E42E3ADE7375680FCE0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C597EFAB20E5FC0700842DCD /* WebKit.framework */,
 				DE683FAF35974D7F827A9D4C /* libPods-Flixster.a */,
 				87A2027EB014982D382A895A /* libPods-FlixsterTests.a */,
 				2E930A3B4C89C4E8674DF5E8 /* libPods-FlixsterUITests.a */,
@@ -390,6 +399,7 @@
 				C5025C2D20E409A700C67025 /* ViewController.m in Sources */,
 				C5025C3820E409A800C67025 /* main.m in Sources */,
 				C5025C5E20E40D7D00C67025 /* MovieCell.m in Sources */,
+				C597EFAF20E5FC3F00842DCD /* TrailerViewController.m in Sources */,
 				C5025C2A20E409A700C67025 /* AppDelegate.m in Sources */,
 				C5EE524220E585F50029CA3B /* MovieCollectionViewController.m in Sources */,
 				C5EE524520E5883D0029CA3B /* MovieCollectionViewCell.m in Sources */,

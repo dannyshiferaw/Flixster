@@ -7,13 +7,16 @@
 //
 
 #import "DetailViewController.h"
+#import "TrailerViewController.h"
+#import <AFNetworking.h>
 
-@interface DetailViewController ()
+@interface DetailViewController () <UIGestureRecognizerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *backdropImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *posterImageView;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *overviewLabel;
+@property (strong, nonatomic) IBOutlet UITapGestureRecognizer *tapGesture;
 
 @end
 
@@ -38,7 +41,13 @@
     //set title and overview 
     self.titleLabel.text = self.movie[@"title"];
     self.overviewLabel.text = self.movie[@"overview"];
-
+    
+    //set up gesture
+    self.tapGesture.delegate = self;
+    self.tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(posterTapped:)];
+    self.posterImageView.userInteractionEnabled = YES;
+    [self.posterImageView addGestureRecognizer: self.tapGesture];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -46,14 +55,18 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
+- (IBAction)posterTapped:(UITapGestureRecognizer *)sender {
+    [self performSegueWithIdentifier:@"toTrailer" sender:sender];
+}
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    TrailerViewController *trailerController = segue.destinationViewController;
+    trailerController.movie = self.movie;
+    
 }
-*/
+
 
 @end

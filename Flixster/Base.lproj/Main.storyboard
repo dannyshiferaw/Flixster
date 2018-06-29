@@ -112,10 +112,14 @@
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ErX-oW-hHj">
                                         <rect key="frame" x="8" y="160" width="162" height="162"/>
+                                        <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="162" id="6Iu-HO-z1E"/>
                                             <constraint firstAttribute="height" constant="162" id="X4M-Qb-alP"/>
                                         </constraints>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="uEl-1A-cil" appends="YES" id="CSo-Sz-5u8"/>
+                                        </connections>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ooz-PH-acP">
                                         <rect key="frame" x="178" y="252" width="178" height="37"/>
@@ -167,12 +171,53 @@
                         <outlet property="backdropImageView" destination="URw-qw-2K2" id="iZT-VW-KA5"/>
                         <outlet property="overviewLabel" destination="9K1-Bk-RhD" id="dYM-kE-OTi"/>
                         <outlet property="posterImageView" destination="ErX-oW-hHj" id="2N9-PM-bYZ"/>
+                        <outlet property="tapGesture" destination="uEl-1A-cil" id="k8x-hH-m2p"/>
                         <outlet property="titleLabel" destination="ooz-PH-acP" id="z7d-ej-02p"/>
+                        <segue destination="q8q-Fr-kJJ" kind="show" identifier="toTrailer" id="22P-xm-mQ8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GI1-06-Vij" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="uEl-1A-cil">
+                    <connections>
+                        <action selector="posterTapped:" destination="jIP-Yc-9Ct" id="v4E-mh-Rq1"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="377" y="1153"/>
+        </scene>
+        <!--Trailer View Controller-->
+        <scene sceneID="fIk-RU-eIO">
+            <objects>
+                <viewController id="q8q-Fr-kJJ" customClass="TrailerViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="jrf-mt-sSq">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="o6e-1M-4Vc">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="MZ7-JQ-7sv">
+                                <rect key="frame" x="177" y="323" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="UDE-67-YcI"/>
+                    </view>
+                    <connections>
+                        <outlet property="activityIndicatoer" destination="MZ7-JQ-7sv" id="Y8m-bp-0IZ"/>
+                        <outlet property="trailerWebkitView" destination="o6e-1M-4Vc" id="GGe-kO-vrU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="beU-3U-lBg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="349.60000000000002" y="1958.7706146926539"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="I2K-RN-EOv">
@@ -237,7 +282,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" fixedFrame="YES" insetsLayoutMarginsFromSafeArea="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="6VK-e7-2hI">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="151" width="375" height="516"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="7iC-jb-8gj">
@@ -262,10 +307,16 @@
                                         </view>
                                         <connections>
                                             <outlet property="imageView" destination="7kU-iP-8G6" id="ATk-c0-KWp"/>
+                                            <segue destination="jIP-Yc-9Ct" kind="show" id="J2P-3V-tRp"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="esC-7D-y0a">
+                                <rect key="frame" x="0.0" y="78" width="359" height="56"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="w20-8U-75t"/>
@@ -273,6 +324,7 @@
                     <navigationItem key="navigationItem" id="5ny-XS-O2N"/>
                     <connections>
                         <outlet property="collectionView" destination="6VK-e7-2hI" id="2DU-WT-nTv"/>
+                        <outlet property="searchBar" destination="esC-7D-y0a" id="rGT-pk-ItW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2VE-8h-jBM" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -280,4 +332,7 @@
             <point key="canvasLocation" x="2416.8000000000002" y="457.42128935532236"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="J2P-3V-tRp"/>
+    </inferredMetricsTieBreakers>
 </document>
