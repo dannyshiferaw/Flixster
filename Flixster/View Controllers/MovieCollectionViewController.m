@@ -17,17 +17,21 @@
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 
 
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+
 @end
 
 @implementation MovieCollectionViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     // Do any additional setup after loading the view.
     self.collectionView.dataSource = self;
     self.collectionView.delegate = self;
     self.searchBar.delegate = self;
     
+    [self.activityIndicator startAnimating];
     [self loadMovies];
     
     UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *) self.collectionView.collectionViewLayout;
@@ -54,9 +58,8 @@
     NSString *url = [baseUrl stringByAppendingString: partialUrl];
     NSURL *posterUrl = [NSURL URLWithString: url];
     
-    //get post images
     [collectionViewCell.imageView setImageWithURL:posterUrl];
-    
+
     return collectionViewCell;
 }
 
@@ -66,7 +69,8 @@
 
 -(void) loadMovies {
     //construct the url
-    NSURL *url = [NSURL URLWithString:@"https://api.themoviedb.org/3/movie/now_playing?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed"];
+    NSURL *url = [NSURL URLWithString:@"https://api.themoviedb.org/3/movie/top_rated?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed&language=en-US&page=1"];
+    
     //do get request
     NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10.0];
     //setup session

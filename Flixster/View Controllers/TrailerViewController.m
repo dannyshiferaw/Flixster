@@ -9,19 +9,30 @@
 #import "TrailerViewController.h"
 #import <WebKit/WebKit.h>
 
-@interface TrailerViewController ()
+@interface TrailerViewController () <UIGestureRecognizerDelegate>
 @property (weak, nonatomic) IBOutlet WKWebView *trailerWebkitView;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicatoer;
+@property (strong, nonatomic) IBOutlet UITapGestureRecognizer *tapGesture;
 
 @end
 
 @implementation TrailerViewController
 
+- (IBAction)closeController:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:^{}];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    //setup gesture
+    //set up gesture
+    self.tapGesture.delegate = self;
+    self.trailerWebkitView.userInteractionEnabled = YES;
+    [self.trailerWebkitView addGestureRecognizer: self.tapGesture];
+    
 
-    //base trailer url on youtube
+    //base trailer url ontclftgthnernihjnfdhhllifkdgubghr youtube
 
     NSString *baseYoutubeUrl = @"https://www.youtube.com/watch?v=";
     

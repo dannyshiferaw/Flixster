@@ -16,5 +16,4 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *movieDescription;
 
-
 @end

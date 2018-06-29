@@ -139,25 +139,15 @@
 		C5025C2720E409A700C67025 /* Flixster */ = {
 			isa = PBXGroup;
 			children = (
+				C5AF79F020E6D315001495CF /* Views */,
+				C576603020E6D2D200BD01CE /* View Controllers */,
 				C5025C2820E409A700C67025 /* AppDelegate.h */,
 				C5025C2920E409A700C67025 /* AppDelegate.m */,
-				C5025C2B20E409A700C67025 /* ViewController.h */,
-				C5025C2C20E409A700C67025 /* ViewController.m */,
 				C5025C2E20E409A700C67025 /* Main.storyboard */,
-				C5EE524320E5883D0029CA3B /* MovieCollectionViewCell.h */,
-				C5EE524420E5883D0029CA3B /* MovieCollectionViewCell.m */,
 				C5025C3120E409A700C67025 /* Assets.xcassets */,
 				C5025C3320E409A700C67025 /* LaunchScreen.storyboard */,
 				C5025C3620E409A800C67025 /* Info.plist */,
 				C5025C3720E409A800C67025 /* main.m */,
-				C5025C5C20E40D7D00C67025 /* MovieCell.h */,
-				C5025C5D20E40D7D00C67025 /* MovieCell.m */,
-				C5BF545A20E4BC5C00D1D7AD /* DetailViewController.h */,
-				C5BF545B20E4BC5C00D1D7AD /* DetailViewController.m */,
-				C5EE524020E585F50029CA3B /* MovieCollectionViewController.h */,
-				C5EE524120E585F50029CA3B /* MovieCollectionViewController.m */,
-				C597EFAD20E5FC3F00842DCD /* TrailerViewController.h */,
-				C597EFAE20E5FC3F00842DCD /* TrailerViewController.m */,
 			);
 			path = Flixster;
 			sourceTree = "<group>";
@@ -178,6 +168,32 @@
 				C5025C4E20E409A800C67025 /* Info.plist */,
 			);
 			path = FlixsterUITests;
+			sourceTree = "<group>";
+		};
+		C576603020E6D2D200BD01CE /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				C5025C2B20E409A700C67025 /* ViewController.h */,
+				C5025C2C20E409A700C67025 /* ViewController.m */,
+				C5BF545A20E4BC5C00D1D7AD /* DetailViewController.h */,
+				C5BF545B20E4BC5C00D1D7AD /* DetailViewController.m */,
+				C5EE524020E585F50029CA3B /* MovieCollectionViewController.h */,
+				C5EE524120E585F50029CA3B /* MovieCollectionViewController.m */,
+				C597EFAE20E5FC3F00842DCD /* TrailerViewController.m */,
+				C597EFAD20E5FC3F00842DCD /* TrailerViewController.h */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		C5AF79F020E6D315001495CF /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C5025C5C20E40D7D00C67025 /* MovieCell.h */,
+				C5025C5D20E40D7D00C67025 /* MovieCell.m */,
+				C5EE524320E5883D0029CA3B /* MovieCollectionViewCell.h */,
+				C5EE524420E5883D0029CA3B /* MovieCollectionViewCell.m */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		E9AA6E42E3ADE7375680FCE0 /* Frameworks */ = {

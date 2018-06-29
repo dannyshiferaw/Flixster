@@ -37,7 +37,7 @@
     //load movies
     [self loadMovies];
     //hide the activity indicator when loading is done
-
+    //setup refresh control
     self.tableView.refreshControl = [[UIRefreshControl alloc] init];
     [self.tableView.refreshControl addTarget:self action:@selector(loadMovies) forControlEvents:UIControlEventValueChanged];
 
