@@ -26,6 +26,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    //customize navigation bar
+    UINavigationBar *navigationBar = self.navigationController.navigationBar;
+    navigationBar.backgroundColor = UIColor.blueColor;
+    navigationBar.tintColor = [UIColor colorWithRed:1.0 green:0.25 blue:0.25 alpha:0.8];
+    
     // Do any additional setup after loading the view.
     self.collectionView.dataSource = self;
     self.collectionView.delegate = self;

@@ -28,7 +28,7 @@
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </view>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="MovieCell" rowHeight="216" id="Q5m-Tw-pMs" customClass="MovieCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="MovieCell" rowHeight="216" id="Q5m-Tw-pMs" customClass="MovieCell">
                                         <rect key="frame" x="0.0" y="28" width="375" height="216"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Q5m-Tw-pMs" id="QkN-pR-oI7">
@@ -73,7 +73,7 @@
                                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
                                             <outlet property="movieDescription" destination="8fI-yi-gkm" id="mva-w3-7Wz"/>
-                                            <outlet property="movieImage" destination="QkN-pR-oI7" id="fMD-U6-v4d"/>
+                                            <outlet property="movieImage" destination="VYl-fq-48p" id="Xax-IX-CXj"/>
                                             <outlet property="movieTitle" destination="mfq-vb-Ltf" id="Ebu-bR-Z6I"/>
                                             <segue destination="jIP-Yc-9Ct" kind="show" id="53E-5e-IF8"/>
                                         </connections>

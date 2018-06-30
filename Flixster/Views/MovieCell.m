@@ -16,12 +16,6 @@
     [super awakeFromNib];
     // Initialization code
     [self.movieTitle sizeToFit];
-    self.selectionStyle = UITableViewCellSelectionStyleNone;
-    //set the background
-    UIView *backgroundView = [[UIView alloc] init];
-    backgroundView.backgroundColor = UIColor.redColor;
-    self.selectedBackgroundView = backgroundView;
-
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

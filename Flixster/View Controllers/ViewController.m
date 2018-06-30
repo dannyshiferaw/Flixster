@@ -32,6 +32,11 @@
     self.tableView.dataSource = self;
     self.tableView.rowHeight = 200;
     
+    //customioze navigation bar
+    UINavigationBar *navigationBar = self.navigationController.navigationBar;
+    navigationBar.backgroundColor = UIColor.blueColor;
+    navigationBar.tintColor = [UIColor colorWithRed:1.0 green:0.25 blue:0.25 alpha:0.8];
+    
     //display activity indicator
     [self.activityIndicator startAnimating];
     //load movies
@@ -56,13 +61,38 @@
     NSString *partialUrl = movie[@"poster_path"];
     NSString *url = [baseUrl stringByAppendingString: partialUrl];
     NSURL *posterUrl = [NSURL URLWithString: url];
-    [movieCell.imageView setImageWithURL:posterUrl];
-    
     //get movie title
     movieCell.movieTitle.text = movie[@"title"];
-    
     //get movie overview
     movieCell.movieDescription.text = movie[@"overview"];
+    
+    //[movieCell.imageView setImageWithURL:posterUrl];
+    NSString *urlString = [NSString stringWithFormat:@"https://image.tmdb.org/t/p/w500/%@", movie[@"poster_path"]];
+    NSURL *newUrl = [NSURL URLWithString:urlString];
+    NSURLRequest *request = [NSURLRequest requestWithURL:newUrl];
+    
+    [movieCell.movieImage setImageWithURLRequest:request placeholderImage:nil
+                                    success:^(NSURLRequest *imageRequest, NSHTTPURLResponse *imageResponse, UIImage *image) {
+                                        
+                                        // imageResponse will be nil if the image is cached
+                                        if (imageResponse) {
+                                            NSLog(@"Image was NOT cached, fade in image");
+                                            movieCell.movieImage.alpha = 0.0;
+                                            movieCell.movieImage.image = image;
+                                            
+                                            //Animate UIImageView back to alpha 1 over 0.3sec
+                                            [UIView animateWithDuration:0.3 animations:^{
+                                                movieCell.movieImage.alpha = 1.0;
+                                            }];
+                                        }
+                                        else {
+                                            movieCell.movieImage.image = image;
+                                        }
+                                    }
+                                    failure:^(NSURLRequest *request, NSHTTPURLResponse * response, NSError *error) {
+                                        // do something for the failure condition
+                                    }];
+    
     
     
     return movieCell;
